@@ -1,0 +1,13 @@
+# Fichiers de configuration de la base de données (Mots de passe)
+config.php
+database.php
+connexion.php
+.env
+
+# Dossiers d'images uploadées par tes utilisateurs (pour ne pas surcharger GitHub)
+/uploads/
+/img/uploads/
+
+# Fichiers systèmes inutiles
+.DS_Store
+Thumbs.db
