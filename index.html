@@ -1,33 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Leaguipedia - Accueil</title>
+    <link rel="stylesheet" href="CSS/index.css">
 </head>
 <body>
-    <header>
-        <h1> Bienvenue sur le site référence pour les joueurs de LOL </h1>
+
+    <header class="main-header">
+        <div class="logo">LEAGUIPEDIA</div>
         <nav>
-            <ul>
-                <li><a href="#"> Connexion/Inscription </a></li>
-                <li><a href="champions.html"> Champions </a></li>
-                <li><a href="#"> E-sport </a></li>
-                <li><a href="#"> Tierlist </a></li>
+            <ul class="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="champions.html">CHAMPIONS</a></li>
+                <li><a href="tierlist.html">TIERLIST</a></li>
+                <li><a href="esport.html">E-SPORT</a></li>
             </ul>
         </nav>
     </header>
-    <section>
-        <aside>
-        <h2> PATCH NOTE 16.10 </h2>
-        <p> Voici les futurs changement qui arriveront dès la nouvelle MaJ ! </p>
-        </aside>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BIENVENUE SUR <span class="gold">LEAGUIPEDIA</span></h1>
+            <p>La base de données ultime pour les joueurs de League of Legends</p>
+            <a href="champions.html" class="btn-main">VOIR LES CHAMPIONS</a>
+        </div>
     </section>
-    <footer>
-        <p>
-            <span> Copyright API RIOT GAMES </span>
-            <a href="#"> Contact </a>
-        </p>
+
+    <section class="patch-note">
+        <div class="patch-box">
+            <h2>PATCH NOTE 16.10</h2>
+            <p>Voici les futurs changements qui arriveront dès la prochaine mise à jour :</p>
+            <ul>
+                <li>Buff de Heimerdinger (Dégâts des tourelles augmentés)</li>
+                <li>Ajustement sur les runes de précision</li>
+                <li>Nouveau skin pour Aurora : Sorcière Stellaire</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p>© 2026 Leaguipedia - Contact</p>
     </footer>
+<script>
+    fetch('https://ddragon.leagueoflegends.com/api/versions.json')
+        .then(response => response.json())
+        .then(versions => {
+            const derniereVersion = versions[0];
+            const titrePatch = document.querySelector('.patch-box h2');
+            titrePatch.innerText = "DERNIER PATCH : " + derniereVersion;
+        })
+        .catch(error => console.error("Erreur API :", error));
+</script>
 </body>
 </html>

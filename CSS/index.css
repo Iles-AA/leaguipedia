@@ -1,0 +1,124 @@
+/* --- 1. RESET (Indispensable pour enlever les marges par défaut) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #010a13;
+    color: #f0e6d2;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+}
+
+/* --- 2. HEADER (Menu de navigation) --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: #010a13;
+    border-bottom: 2px solid #c8aa6e;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.gold {
+    color: #c8aa6e;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none; /* Enlève les points violets */
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none; /* Enlève le soulignement bleu */
+    color: #a09b8c;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #c8aa6e;
+}
+
+/* --- 3. SECTION HERO (Titre et bouton centrés) --- */
+.hero {
+    height: 50vh;           /* Hauteur réduite pour voir le patch note */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #a09b8c;
+    margin-bottom: 30px;
+}
+
+.btn-main {
+    background-color: #c8aa6e;
+    color: #010a13;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid #c8aa6e;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background-color: transparent;
+    color: #c8aa6e;
+}
+
+/* --- 4. SECTION PATCH NOTE --- */
+.patch-note {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.patch-box {
+    background-color: #1e2328;
+    border: 1px solid #32281e;
+    border-left: 5px solid #c8aa6e;
+    padding: 30px;
+    width: 100%;
+    max-width: 650px;
+}
+
+.patch-box h2 {
+    color: #c8aa6e;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.patch-box ul {
+    padding-left: 20px;
+    color: #a09b8c;
+}
+
+.patch-box li {
+    margin-bottom: 12px;
+}

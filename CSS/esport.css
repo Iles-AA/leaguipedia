@@ -1,0 +1,80 @@
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: #010a13;
+    color: #f0e6d2;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    border-bottom: 2px solid #c8aa6e;
+    background: #010a13;
+}
+
+.logo { font-weight: bold; letter-spacing: 2px; text-transform: uppercase; font-size: 1.5rem; }
+.gold { color: #c8aa6e; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: #a09b8c; font-weight: bold; text-transform: uppercase; }
+.nav-links a.active, .nav-links a:hover { color: #c8aa6e; }
+
+.esport-calendar {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.page-title { text-align: center; margin-bottom: 40px; letter-spacing: 3px; font-size: 2.5rem; }
+
+.match-list { margin-bottom: 30px; }
+
+.list-category {
+    color: #c8aa6e;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.match-row {
+    display: flex;
+    align-items: center;
+    background: #1e2328;
+    padding: 15px 25px;
+    border: 1px solid #32281e;
+    margin-bottom: 5px;
+}
+
+.match-time { width: 100px; font-weight: bold; color: #a09b8c; }
+
+.match-team {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.match-team.left { justify-content: flex-end; }
+.match-team.right { justify-content: flex-start; }
+
+.match-score {
+    width: 120px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #c8aa6e;
+    font-weight: bold;
+}
+
+.match-league { width: 80px; text-align: right; color: #5b5a56; font-size: 0.8rem; font-weight: bold; }
+
+.match-row.live { border-left: 4px solid #ee5a5a; }
+.match-row.live .match-time { color: #ee5a5a; animation: blink 1.5s infinite; }
+
+@keyframes blink { 50% { opacity: 0.3; } }
