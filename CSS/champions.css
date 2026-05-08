@@ -1,0 +1,76 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Beaufort+for+LOL:wght@700&family=Spiegel:wght@400;700&display=swap');
+
+body {
+    background-color: #010a13;
+    color: #f0e6d2;
+    font-family: 'Spiegel', sans-serif;
+    margin: 0;
+}
+
+.champions-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    padding: 40px;
+}
+
+/* Chaque carte de champion */
+.champion {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #1e2328 0%, #111519 100%);
+    border: 1px solid #32281e;
+    border-radius: 4px;
+    padding: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+/* Effet au survol (Hover) */
+.champion:hover {
+    transform: translateY(-10px);
+    border-color: #c8aa6e;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.champion img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    border: 1px solid #c8aa6e;
+    border-radius: 2px;
+}
+
+.champion h2 {
+    margin: 15px 0 2px 0;
+    font-size: 1.3rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Beaufort for LOL', serif;
+    color: #c89b3c;
+    letter-spacing: 2px;
+}
+
+.champion p {
+    margin: 0 0 10px 0;
+    font-size: 0.8rem;
+    color: #a09b8c;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.champion::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.champion:hover::after {
+    border: 2px solid #c8aa6e;
+}
