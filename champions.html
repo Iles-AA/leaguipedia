@@ -53,7 +53,8 @@
 const DD = 'https://ddragon.leagueoflegends.com';
 let allChampions = [], currentLane = 'all', currentSearch = '', patchVersion = '';
 
-// Map des postes par champion (basé sur le client LoL officiel)
+// LANES
+
 const LANES = {
     top: ['Aatrox','Akali','Ambessa','Camille','Cho\'Gath','Darius','DrMundo','Fiora','Gangplank',
           'Garen','Gnar','Gragas','Gwen','Illaoi','Irelia','Jax','Jayce','Kayle','KSante','Kennen',
@@ -80,12 +81,10 @@ const LANES = {
               'Thresh','Vel\'Koz','Xerath','Yuumi','Zilean','Zyra','Mel','Zaahen','TahmKench','Velkoz']
 };
 
-// Normalise le nom pour la comparaison (enlève espaces, apostrophes, accents)
 function normName(name) {
     return name.toLowerCase().replace(/['\s\-\.]/g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-// Construit un Set normalisé pour chaque lane
 const LANE_SETS = {};
 for (const [lane, champs] of Object.entries(LANES)) {
     LANE_SETS[lane] = new Set(champs.map(normName));

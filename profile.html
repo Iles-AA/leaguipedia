@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil — Leaguipedia</title>
+    <link rel="stylesheet" href="CSS/auth.css">
+    <link rel="stylesheet" href="CSS/profile.css">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="logo">LEAGUI<span class="gold">PEDIA</span></div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="champions.html">Champions</a></li>
+            <li><a href="tierlist.html">Tier List</a></li>
+            <li><a href="esport.html">E-sport</a></li>
+            <li><a href="profile.html" class="active">Profil</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="profile-main">
+
+
+    <div class="profile-banner">
+        <div class="profile-banner-bg" id="banner-bg"></div>
+        <div class="profile-banner-overlay"></div>
+        <div class="profile-identity">
+            <div class="avatar-wrapper">
+                <img src="" alt="Avatar" class="avatar-img" id="avatar-preview">
+                <button class="avatar-edit-btn" id="avatar-edit-btn" title="Changer l'avatar">✎</button>
+                <input type="file" id="avatar-input" accept="image/*" style="display:none">
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-username" id="display-username">—</h1>
+                <p class="profile-email" id="display-email">—</p>
+                <p class="profile-since" id="display-since">—</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-body">
+
+        <aside class="profile-sidebar">
+            <button class="sidebar-btn active" data-section="general">Informations</button>
+            <button class="sidebar-btn" data-section="password">Mot de passe</button>
+            <button class="sidebar-btn" data-section="appearance">Apparence</button>
+            <button class="sidebar-btn danger" id="btn-logout">Déconnexion</button>
+        </aside>
+
+        <div class="profile-content">
+
+            <section class="profile-section active" id="section-general">
+                <h2 class="section-title">Informations générales</h2>
+
+                <div class="form-group">
+                    <label>Nom d'invocateur</label>
+                    <input type="text" id="edit-username" maxlength="20">
+                    <span class="field-error" id="edit-username-err"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Adresse e-mail</label>
+                    <input type="email" id="edit-email">
+                    <span class="field-error" id="edit-email-err"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Rang favori</label>
+                    <select id="edit-rank">
+                        <option value="">— Non renseigné —</option>
+                        <option value="iron">Fer</option>
+                        <option value="bronze">Bronze</option>
+                        <option value="silver">Argent</option>
+                        <option value="gold">Or</option>
+                        <option value="platinum">Platine</option>
+                        <option value="emerald">Émeraude</option>
+                        <option value="diamond">Diamant</option>
+                        <option value="master">Maître</option>
+                        <option value="grandmaster">Grand Maître</option>
+                        <option value="challenger">Challenger</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Poste principal</label>
+                    <select id="edit-role">
+                        <option value="">— Non renseigné —</option>
+                        <option value="top">Top Lane</option>
+                        <option value="jungle">Jungle</option>
+                        <option value="mid">Mid Lane</option>
+                        <option value="adc">ADC</option>
+                        <option value="support">Support</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Bio</label>
+                    <textarea id="edit-bio" maxlength="200" rows="3" placeholder="Présente-toi en quelques mots..."></textarea>
+                    <span class="char-count" id="bio-count">0 / 200</span>
+                </div>
+
+                <button class="btn-auth" id="btn-save-general">SAUVEGARDER</button>
+                <div class="auth-feedback" id="feedback-general"></div>
+            </section>
+
+            <section class="profile-section" id="section-password">
+                <h2 class="section-title">Changer le mot de passe</h2>
+
+                <div class="form-group">
+                    <label>Mot de passe actuel</label>
+                    <div class="input-wrap">
+                        <input type="password" id="pw-current" placeholder="••••••••">
+                        <button class="toggle-pw" data-target="pw-current" type="button">👁</button>
+                    </div>
+                    <span class="field-error" id="pw-current-err"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Nouveau mot de passe</label>
+                    <div class="input-wrap">
+                        <input type="password" id="pw-new" placeholder="••••••••">
+                        <button class="toggle-pw" data-target="pw-new" type="button">👁</button>
+                    </div>
+                    <ul class="pw-rules">
+                        <li class="rule" id="p-rule-length">Au moins 8 caractères</li>
+                        <li class="rule" id="p-rule-upper">Une majuscule</li>
+                        <li class="rule" id="p-rule-lower">Une minuscule</li>
+                        <li class="rule" id="p-rule-number">Un chiffre</li>
+                        <li class="rule" id="p-rule-special">Un caractère spécial</li>
+                    </ul>
+                    <div class="pw-strength-bar"><div class="pw-strength-fill" id="p-pw-fill"></div></div>
+                    <span class="pw-strength-label" id="p-pw-label"></span>
+                    <span class="field-error" id="pw-new-err"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirmer le nouveau mot de passe</label>
+                    <div class="input-wrap">
+                        <input type="password" id="pw-confirm" placeholder="••••••••">
+                        <button class="toggle-pw" data-target="pw-confirm" type="button">👁</button>
+                    </div>
+                    <span class="field-error" id="pw-confirm-err"></span>
+                </div>
+
+                <button class="btn-auth" id="btn-save-password">CHANGER LE MOT DE PASSE</button>
+                <div class="auth-feedback" id="feedback-password"></div>
+            </section>
+
+            <section class="profile-section" id="section-appearance">
+                <h2 class="section-title">Apparence du profil</h2>
+
+                <div class="form-group">
+                    <label>Bannière (splash art d'un champion)</label>
+                    <div class="banner-picker" id="banner-picker">
+                        <!-- Généré par JS -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Couleur d'accent</label>
+                    <div class="color-picker-row">
+                        <div class="color-swatch active" data-color="#c8aa6e" style="background:#c8aa6e" title="Or (défaut)"></div>
+                        <div class="color-swatch" data-color="#0bc4e3" style="background:#0bc4e3" title="Bleu Ionia"></div>
+                        <div class="color-swatch" data-color="#e84057" style="background:#e84057" title="Rouge Noxus"></div>
+                        <div class="color-swatch" data-color="#5a8a3c" style="background:#5a8a3c" title="Vert Demacia"></div>
+                        <div class="color-swatch" data-color="#9b59b6" style="background:#9b59b6" title="Violet Void"></div>
+                        <div class="color-swatch" data-color="#e67e22" style="background:#e67e22" title="Orange Shurima"></div>
+                    </div>
+                </div>
+
+                <button class="btn-auth" id="btn-save-appearance">SAUVEGARDER L'APPARENCE</button>
+                <div class="auth-feedback" id="feedback-appearance"></div>
+            </section>
+
+        </div>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <p>Leaguipedia n'est pas affilié à Riot Games</p>
+</footer>
+
+<script src="JS/auth.js" type="module"></script>
+<script src="JS/profile.js"></script>
+</body>
+</html>

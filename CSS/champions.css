@@ -1,3 +1,5 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Beaufort+for+LOL:wght@700&family=Spiegel:wght@400;700&display=swap');
 
 .main-header {
@@ -103,8 +105,10 @@ body {
 
 .champion img {
     width: 100%;
-    aspect-ratio: 16/10;
-    object-fit: cover;
+    aspect-ratio: 3/4;
+    object-fit: contain;
+    object-position: center;
+    background-color: #0a0e13;
     border: 1px solid #c8aa6e;
     border-radius: 2px;
 }
@@ -165,7 +169,7 @@ body {
     text-decoration: none;
     color: inherit;
 }
- 
+
 .role-filters {
     display: flex;
     justify-content: center;
@@ -174,7 +178,7 @@ body {
     background-color: #010a13;
     flex-wrap: wrap;
 }
- 
+
 .role-btn {
     padding: 8px 22px;
     background: transparent;
@@ -188,14 +192,14 @@ body {
     cursor: pointer;
     transition: all 0.25s;
 }
- 
+
 .role-btn:hover,
 .role-btn.active {
     border-color: #c8aa6e;
     color: #c8aa6e;
     background: rgba(200, 170, 110, 0.07);
 }
- 
+
 /* ===== COMPTEUR ===== */
 .champions-count {
     text-align: center;
@@ -206,7 +210,7 @@ body {
     padding-bottom: 20px;
     background: #010a13;
 }
- 
+
 /* ===== DIFFICULTÉ ===== */
 .champion-difficulty {
     display: flex;
@@ -214,18 +218,18 @@ body {
     gap: 3px;
     margin-top: 6px;
 }
- 
+
 .diff-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: #32281e;
 }
- 
+
 .diff-dot.filled {
     background: #c8aa6e;
 }
- 
+
 /* ===== BADGES POSTE ===== */
 .champion-tags {
     display: flex;
@@ -234,7 +238,7 @@ body {
     flex-wrap: wrap;
     margin-top: 4px;
 }
- 
+
 .tag-badge {
     font-size: 0.62rem;
     padding: 2px 6px;
@@ -243,7 +247,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
- 
+
 /* ===== LOADING ===== */
 .loading-screen {
     display: flex;
@@ -253,7 +257,7 @@ body {
     min-height: 60vh;
     gap: 20px;
 }
- 
+
 .loading-spin {
     width: 50px;
     height: 50px;
@@ -262,15 +266,14 @@ body {
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
- 
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
- 
+
 .loading-text {
     color: #a09b8c;
     font-size: 0.85rem;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
- 
