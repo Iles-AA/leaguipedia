@@ -8,13 +8,22 @@
 <body>
 
     <header class="main-header">
-        <div class="logo">LEAGUIPEDIA</div>
+        <div class="logo">LEAGUI<span class="gold">PEDIA</span></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="index.html" class="active">ACCUEIL</a></li>
                 <li><a href="champions.html">CHAMPIONS</a></li>
                 <li><a href="tierlist.html">TIERLIST</a></li>
                 <li><a href="esport.html">E-SPORT</a></li>
+                <li class="nav-profile-item">
+                    <a href="profile.html" class="nav-profile-link" id="nav-profile-btn">
+                        <span class="nav-avatar" id="nav-avatar-wrap">
+                            <img src="" alt="" class="nav-avatar-img" id="nav-avatar-img">
+                            <span class="nav-avatar-placeholder" id="nav-avatar-placeholder">👤</span>
+                        </span>
+                        <span id="nav-profile-label">PROFIL</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -29,7 +38,7 @@
 
     <section class="patch-note">
         <div class="patch-box">
-            <h2>PATCH NOTE 16.10</h2>
+            <h2>DERNIER PATCH</h2>
             <p>Voici les futurs changements qui arriveront dès la prochaine mise à jour :</p>
             <ul>
                 <li>Buff de Heimerdinger (Dégâts des tourelles augmentés)</li>
@@ -40,17 +49,39 @@
     </section>
 
     <footer class="main-footer">
-        <p>© 2026 Leaguipedia - Contact</p>
+        <p>© 2026 Leaguipedia — Non affilié à Riot Games</p>
     </footer>
-<script>
-    fetch('https://ddragon.leagueoflegends.com/api/versions.json')
-        .then(response => response.json())
-        .then(versions => {
-            const derniereVersion = versions[0];
-            const titrePatch = document.querySelector('.patch-box h2');
-            titrePatch.innerText = "DERNIER PATCH : " + derniereVersion;
-        })
-        .catch(error => console.error("Erreur API :", error));
-</script>
+
+    <script src="JS/api.js"></script>
+    <script>
+        fetch('https://ddragon.leagueoflegends.com/api/versions.json')
+            .then(r => r.json())
+            .then(versions => {
+                document.querySelector('.patch-box h2').innerText = 'DERNIER PATCH : ' + versions[0];
+            })
+            .catch(() => {});
+        (function () {
+            const label       = document.getElementById('nav-profile-label');
+            const avatarImg   = document.getElementById('nav-avatar-img');
+            const placeholder = document.getElementById('nav-avatar-placeholder');
+
+            if (window.LP && LP.Session.isLoggedIn()) {
+                LP.Auth.me()
+                    .then(user => {
+                        label.textContent = user.username.toUpperCase();
+                        if (user.avatar) {
+                            avatarImg.src             = user.avatar;
+                            avatarImg.style.display   = 'block';
+                            placeholder.style.display = 'none';
+                        } else if (user.bannerChamp) {
+                            avatarImg.src             = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${user.bannerChamp}_0.jpg`;
+                            avatarImg.style.display   = 'block';
+                            placeholder.style.display = 'none';
+                        }
+                    })
+                    .catch(() => {});
+            }
+        })();
+    </script>
 </body>
 </html>
