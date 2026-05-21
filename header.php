@@ -9,12 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaguipedia</title>
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/auth.css">
-    <link rel="stylesheet" href="CSS/champions.css">
-    <link rel="stylesheet" href="CSS/profile.css">
-    <link rel="stylesheet" href="CSS/esport.css">
-    <link rel="stylesheet" href="CSS/detail.css">
+        <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 <header class="main-header">

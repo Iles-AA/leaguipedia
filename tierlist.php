@@ -1,6 +1,6 @@
 <?php 
-include 'header.php'; 
 include 'connexion.php';
+include 'header.php'; 
 
 // bloque acces aux invités
 if (!isset($_SESSION['user_id'])) {
@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 // recup champ BDD
 $req = $bdd->query("SELECT DISTINCT champion_id FROM champions_lanes ORDER BY champion_id ASC");
 ?>
-<link rel="stylesheet" href="CSS/tierlist.css">
 
 <main class="tierlist-maker-main">
     <h1>Créateur de Tierlist</h1>

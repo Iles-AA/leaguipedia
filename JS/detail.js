@@ -1,4 +1,3 @@
-
 const DD     = 'https://ddragon.leagueoflegends.com';
 const params = new URLSearchParams(location.search);
 const champId   = params.get('id');
@@ -133,11 +132,13 @@ function render(c, version) {
         </div>`;
     }).join('');
 
-    const skinsHtml = c.skins.map((s, i) => `
-        <div class="skin-card ${i === 0 ? 'default' : ''}">
-            <img src="${DD}/cdn/img/champion/splash/${c.id}_${s.num}.jpg" alt="${s.name}" loading="lazy">
-            <div class="skin-name">${i === 0 ? 'Défaut' : s.name}</div>
-        </div>`).join('');
+    const skinsHtml = c.skins
+        .filter((s, i) => i === 0 || !s.name.includes('('))
+        .map((s, i) => `
+            <div class="skin-card ${i === 0 ? 'default' : ''}">
+                <img src="${DD}/cdn/img/champion/splash/${c.id}_${s.num}.jpg" alt="${s.name}" loading="lazy">
+                <div class="skin-name">${i === 0 ? 'Défaut' : s.name}</div>
+            </div>`).join('');
 
     const spellsHtml = spells.map(s => `
         <div class="spell-row">
