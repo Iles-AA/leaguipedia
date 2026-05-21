@@ -1,8 +1,3 @@
-/**
- * Leaguipedia — detail.js
- * Page de détail d'un champion — données via Riot Data Dragon
- * Favoris et tierlist sauvegardés en BDD via api.js
- */
 
 const DD     = 'https://ddragon.leagueoflegends.com';
 const params = new URLSearchParams(location.search);
@@ -11,9 +6,6 @@ const vParam    = params.get('v');
 
 if (!champId) window.location.href = 'champions.html';
 
-// =====================
-//  INIT
-// =====================
 async function init() {
     try {
         const version = vParam || (await fetch(`${DD}/api/versions.json`).then(r => r.json()))[0];
@@ -22,7 +14,6 @@ async function init() {
 
         render(champ, version);
 
-        // Charger favoris + tierlist si connecté
         if (LP.Session.isLoggedIn()) {
             loadUserData(champId);
         }
@@ -36,9 +27,6 @@ async function init() {
     }
 }
 
-// =====================
-//  CHARGER FAVORIS & TIERLIST
-// =====================
 async function loadUserData(champId) {
     try {
         const [favs, tiers] = await Promise.all([
@@ -53,9 +41,6 @@ async function loadUserData(champId) {
     } catch {}
 }
 
-// =====================
-//  ACTIONS UTILISATEUR (favori + tierlist)
-// =====================
 function renderUserActions(champId, isFav, currentTier) {
     const container = document.getElementById('user-actions');
     if (!container) return;
@@ -101,9 +86,6 @@ function renderUserActions(champId, isFav, currentTier) {
     });
 }
 
-// =====================
-//  RENDER PAGE
-// =====================
 function cleanDesc(text) {
     return text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 }
@@ -220,7 +202,4 @@ function render(c, version) {
     });
 }
 
-// =====================
-//  LANCEMENT
-// =====================
 init();
