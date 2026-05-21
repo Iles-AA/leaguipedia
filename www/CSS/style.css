@@ -109,7 +109,6 @@ body {
     margin-top: auto;
 }
 
-/* Éléments de formulaires et boutons communs */
 .form-group {
     margin-bottom: 22px;
 }
@@ -165,7 +164,6 @@ body {
 .btn-auth:hover { background: #d4b97a; }
 .btn-auth:active { transform: scale(0.99); }
 
-/* Animation de chargement commune */
 .loading-spin {
     width: 50px;
     height: 50px;
@@ -246,9 +244,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* ==========================================================================
-   4. PAGE DE CONNEXION / INSCRIPTION (auth.css)
-   ========================================================================== */
 .auth-main {
     flex: 1;
     display: flex;
@@ -1100,3 +1095,67 @@ body {
     text-transform: uppercase;
     cursor: pointer;
 }
+/* ===== FIX SELECT ===== */
+.form-group select {
+    appearance: auto;
+    -webkit-appearance: auto;
+    width: 100%;
+    padding: 12px 16px;
+    background: #1e2328;
+    border: 1px solid #32281e;
+    color: #f0e6d2;
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.form-group select option {
+    background: #1e2328;
+    color: #f0e6d2;
+}
+
+/* ===== TIERLIST CRUD ===== */
+.tierlist-header { text-align: center; margin-bottom: 40px; }
+.tierlist-header h1 { font-size: 2rem; letter-spacing: 4px; text-transform: uppercase; }
+.tierlist-sub { color: #a09b8c; font-size: 0.85rem; letter-spacing: 1px; margin-top: 8px; }
+
+.saved-tierlists-wrap { margin-bottom: 40px; background: #0d1117; border: 1px solid #32281e; padding: 24px; }
+.saved-tierlists-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; border-bottom: 1px solid #1e2328; padding-bottom: 12px; }
+.saved-tierlists-header h2 { font-size: 0.85rem; letter-spacing: 3px; color: #c8aa6e; text-transform: uppercase; }
+.tl-count { font-size: 0.72rem; color: #5c5b57; letter-spacing: 1px; text-transform: uppercase; }
+.saved-tierlists-list { display: flex; flex-direction: column; gap: 8px; }
+
+.tl-card { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #060b10; border: 1px solid #1e2328; transition: border-color 0.2s; }
+.tl-card:hover { border-color: #32281e; }
+.tl-card-info { display: flex; align-items: center; gap: 20px; }
+.tl-card-title { font-weight: bold; font-size: 0.9rem; color: #f0e6d2; text-transform: uppercase; letter-spacing: 1px; }
+.tl-card-date, .tl-card-champs { font-size: 0.72rem; color: #5c5b57; text-transform: uppercase; letter-spacing: 1px; }
+.tl-card-actions { display: flex; gap: 8px; }
+
+.btn-tl-load, .btn-tl-delete { padding: 6px 16px; font-size: 0.72rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: 1px solid; transition: all 0.2s; background: transparent; font-family: 'Segoe UI', sans-serif; }
+.btn-tl-load { border-color: #c8aa6e; color: #c8aa6e; }
+.btn-tl-load:hover { background: rgba(200,170,110,0.1); }
+.btn-tl-delete { border-color: #e84057; color: #e84057; }
+.btn-tl-delete:hover { background: rgba(232,64,87,0.1); }
+
+.tl-empty, .tl-loading { color: #5c5b57; font-size: 0.82rem; text-align: center; padding: 20px; letter-spacing: 1px; }
+.tl-error { color: #e84057; font-size: 0.82rem; padding: 10px; }
+
+.editor-topbar { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; }
+.editor-topbar input { flex: 1; padding: 10px 16px; background: #1e2328; border: 1px solid #32281e; color: #f0e6d2; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; outline: none; transition: border-color 0.2s; font-family: 'Segoe UI', sans-serif; }
+.editor-topbar input:focus { border-color: #c8aa6e; }
+.editor-actions { display: flex; gap: 8px; }
+
+.btn-secondary { padding: 10px 20px; background: transparent; border: 1px solid #32281e; color: #a09b8c; font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; font-family: 'Segoe UI', sans-serif; }
+.btn-secondary:hover { border-color: #a09b8c; color: #f0e6d2; }
+
+.tl-feedback { min-height: 24px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; text-align: center; }
+.tl-feedback.success { color: #5a8a3c; }
+.tl-feedback.error { color: #e84057; }
+
+.pool-section { margin-top: 20px; border: 1px solid #32281e; }
+.pool-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #0d1117; border-bottom: 1px solid #32281e; font-size: 0.72rem; color: #a09b8c; text-transform: uppercase; letter-spacing: 2px; }
+.pool-search { padding: 5px 12px; background: #1e2328; border: 1px solid #32281e; color: #f0e6d2; font-size: 0.75rem; outline: none; width: 200px; transition: border-color 0.2s; }
+.pool-search:focus { border-color: #c8aa6e; }
+.sortable-ghost { opacity: 0.4; border-color: #c8aa6e !important; }

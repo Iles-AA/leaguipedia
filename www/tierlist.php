@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Charger les champions depuis la BDD
 $req  = $bdd->query("SELECT DISTINCT champion_id FROM champions_lanes ORDER BY champion_id ASC");
 $champions = $req->fetchAll(PDO::FETCH_COLUMN);
 ?>
@@ -19,7 +18,6 @@ $champions = $req->fetchAll(PDO::FETCH_COLUMN);
         <p class="tierlist-sub">Glisse les champions dans les tiers, puis sauvegarde ta liste</p>
     </div>
 
-    <!-- MES TIERLISTS SAUVEGARDÉES -->
     <div class="saved-tierlists-wrap">
         <div class="saved-tierlists-header">
             <h2>MES TIERLISTS</h2>
@@ -43,7 +41,6 @@ $champions = $req->fetchAll(PDO::FETCH_COLUMN);
 
         <div id="feedback-tl" class="tl-feedback"></div>
 
-        <!-- PLATEAU DE TIERS -->
         <div class="tier-board" id="tier-board">
             <div class="tier-row">
                 <div class="label" style="background:#ff4655">S</div>
@@ -67,7 +64,6 @@ $champions = $req->fetchAll(PDO::FETCH_COLUMN);
             </div>
         </div>
 
-        <!-- POOL -->
         <div class="pool-section">
             <div class="pool-header">
                 <span>POOL — Champions disponibles</span>

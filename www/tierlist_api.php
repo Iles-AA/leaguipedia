@@ -1,13 +1,13 @@
 <?php
 
 session_start();
-include __DIR__ . '/../connexion.php';
+include __DIR__ . '/connexion.php';
 
 /** @var PDO $bdd */
 
 header('Content-Type: application/json; charset=utf-8');
 
-// Utilitaire réponse JSON
+// rep JSON
 function respond(int $code, array $data): void {
     http_response_code($code);
     echo json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -77,7 +77,7 @@ if ($method === 'POST') {
 }
 
 if ($method === 'PUT' && $id) {
-    // Vérifier propriété
+    // Vérif propriété
     $req = $bdd->prepare('SELECT user_id FROM user_tierlists WHERE id = ?');
     $req->execute([$id]);
     $row = $req->fetch(PDO::FETCH_ASSOC);

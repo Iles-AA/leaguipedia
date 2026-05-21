@@ -1,6 +1,5 @@
 
-
-const API_URL = 'http://localhost:3000/api';
+const API_URL = ''; 
 
 const Session = {
     get()        { return localStorage.getItem('lp_token') || sessionStorage.getItem('lp_token'); },
@@ -16,7 +15,14 @@ async function apiRequest(method, endpoint, body = null) {
     const token = Session.get();
     if (token) opts.headers['Authorization'] = `Bearer ${token}`;
     if (body)  opts.body = JSON.stringify(body);
-    const res  = await fetch(`${API_URL}${endpoint}`, opts);
+    
+   
+    let url = `${API_URL}${endpoint}`;
+    if (endpoint.startsWith('/tierlist')) {
+        url = 'save_tierlist.php'; 
+    }
+
+    const res  = await fetch(url, opts);
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || `Erreur ${res.status}`);
     return data;
@@ -34,7 +40,7 @@ const Auth = {
     async logout() {
         try { await apiRequest('POST', '/auth/logout'); } catch {}
         Session.clear();
-        window.location.href = 'auth.html';
+        window.location.href = 'auth.php';
     },
     async me() {
         return apiRequest('GET', '/auth/me');
@@ -47,10 +53,10 @@ const Users = {
     async deleteAccount(password)   { return apiRequest('DELETE', '/users/account', { password }); }
 };
 
-
 const Tierlist = {
     async get()                          { return apiRequest('GET',    '/tierlist'); },
-    async set(championId, tier, note='') { return apiRequest('PUT',    `/tierlist/${championId}`, { tier, note }); },
+    // Cette fonction est appelée par ton bouton sauvegarder de la tierlist !
+    async set(championId, tier, note='') { return apiRequest('POST',   '/tierlist', { championId, tier, note }); },
     async remove(championId)             { return apiRequest('DELETE', `/tierlist/${championId}`); }
 };
 
@@ -60,11 +66,9 @@ const Favorites = {
     async remove(championId) { return apiRequest('DELETE', `/favorites/${championId}`); }
 };
 
-
 const Champions = {
     async getLanes() { return apiRequest('GET', '/champions/lanes'); }
 };
-
 
 const Leagues = {
     async getAll() { return apiRequest('GET', '/leagues'); }

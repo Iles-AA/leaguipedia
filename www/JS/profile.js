@@ -49,10 +49,10 @@ document.querySelectorAll('.sidebar-btn').forEach(btn => {
         // 1. Nettoyer les classes actives
         document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
         
-        // 2. Nettoyer les sections : on enlève 'active' ET on remet le display
+        // 2. clear section
         document.querySelectorAll('.profile-section').forEach(s => {
             s.classList.remove('active');
-            s.style.display = 'none'; // Force le masquage
+            s.style.display = 'none'; // Force mask
         });
 
         // 3. Activer la cible

@@ -1,14 +1,6 @@
-/**
- * Leaguipedia — tierlist.js
- * CRUD complet avec l'API tierlist.php
- */
+const API = 'tierlist_api.php';
+let editingId = null; 
 
-const API = 'api/tierlist.php';
-let editingId = null; // ID de la tierlist en cours d'édition
-
-// =====================
-//  SORTABLE — drag & drop
-// =====================
 document.querySelectorAll('.drop-zone').forEach(zone => {
     new Sortable(zone, {
         group:     'tierlist',
@@ -17,9 +9,6 @@ document.querySelectorAll('.drop-zone').forEach(zone => {
     });
 });
 
-// =====================
-//  RECHERCHE DANS LE POOL
-// =====================
 document.getElementById('pool-search').addEventListener('input', function () {
     const q = this.value.toLowerCase();
     document.querySelectorAll('#pool .champion-item').forEach(item => {
@@ -27,9 +16,6 @@ document.getElementById('pool-search').addEventListener('input', function () {
     });
 });
 
-// =====================
-//  LIRE MES TIERLISTS (READ)
-// =====================
 async function loadMyTierlists() {
     const list = document.getElementById('saved-tierlists-list');
     list.innerHTML = '<div class="tl-loading">Chargement...</div>';
@@ -67,9 +53,6 @@ async function loadMyTierlists() {
     }
 }
 
-// =====================
-//  CHARGER DANS L'ÉDITEUR (READ par ID)
-// =====================
 async function loadIntoEditor(id) {
     try {
         const res  = await fetch(`${API}?id=${id}`);
@@ -102,9 +85,6 @@ async function loadIntoEditor(id) {
     }
 }
 
-// =====================
-//  SAUVEGARDER (CREATE ou UPDATE)
-// =====================
 document.getElementById('btn-save').addEventListener('click', async () => {
     const title  = document.getElementById('tl-title').value.trim();
     const layout = getLayout();
@@ -139,9 +119,6 @@ document.getElementById('btn-save').addEventListener('click', async () => {
     }
 });
 
-// =====================
-//  SUPPRIMER (DELETE)
-// =====================
 async function deleteTierlist(id) {
     if (!confirm('Supprimer cette tierlist ?')) return;
 
@@ -162,9 +139,6 @@ async function deleteTierlist(id) {
     }
 }
 
-// =====================
-//  RÉINITIALISER L'ÉDITEUR
-// =====================
 document.getElementById('btn-reset-editor').addEventListener('click', () => {
     if (confirm('Remettre tous les champions dans le pool ?')) {
         resetEditor(true);
@@ -182,9 +156,6 @@ function resetEditor(resetTitle) {
     }
 }
 
-// =====================
-//  UTILS
-// =====================
 function getLayout() {
     const layout = {};
     document.querySelectorAll('.drop-zone[data-tier]').forEach(zone => {
@@ -214,7 +185,4 @@ function escHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// =====================
-//  INIT
-// =====================
 loadMyTierlists();
